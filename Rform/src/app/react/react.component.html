@@ -1,0 +1,72 @@
+<p>react works!</p>
+<section class="jumbotron col-4 mx-auto ">
+<form [formGroup]="empform"  (submit)="fn()"  >
+        <div class="form-group">
+             name:<input class="form-control" formControlName="uname"
+             [ngClass]="{'is-invalid': empform.get('uname').touched && empform.get('uname').invalid ,'is-valid':empform.get('uname').valid}">
+             
+        </div>
+     <section *ngIf="empform.get('uname').invalid && empform.get('uname').touched " >
+          <p style="color: brown" *ngIf="empform.get('uname').errors.required"> name required  </p>
+           <p style="color: brown" *ngIf="empform.get('uname').errors.minlength">atleast 3 char </p>             
+     </section>
+ 
+    <div class="form-group">
+        age: <input class="form-control" formControlName="age"
+        [ngClass]="{'is-invalid': empform.get('age').touched && empform.get('age').invalid ,'is-valid':empform.get('age').valid}">
+    </div>
+    <section *ngIf="empform.get('age').invalid && empform.get('age').touched " >
+            <p style="color: brown" *ngIf="empform.get('age').errors.required"> age required  </p>
+             <p style="color: brown" *ngIf="empform.get('age').errors.min">age should be greater than 10</p>             
+             <p style="color: brown" *ngIf="empform.get('age').errors.max">age should be less than 20 </p>             
+       </section>
+
+       
+    <div class="form-group">
+            Email: <input class="form-control" formControlName="email"
+            [ngClass]="{'is-invalid': empform.get('email').touched && empform.get('email').invalid ,'is-valid':empform.get('email').valid}">
+        </div>
+        <section *ngIf="empform.get('email').invalid && empform.get('email').touched " >
+                <p style="color: brown" *ngIf="empform.get('email').errors.required"> email required  </p>
+                          
+           </section>
+           <div class="form-group">
+                Password: <input class="form-control" formControlName="password"
+                [ngClass]="{'is-invalid': empform.get('password').touched && empform.get('password').invalid ,'is-valid':empform.get('password').valid}">
+            </div>
+            <section *ngIf="empform.get('password').invalid && empform.get('password').touched " >
+                    <p style="color: brown" *ngIf="empform.get('password').errors.required"> password required  </p>
+                    <p style="color: brown" *ngIf="empform.get('password').errors.minlength ">atleast 6 char </p>    
+                              
+               </section>
+
+               <div class="form-group">
+                  Confirm Password: <input class="form-control" formControlName="cnfpassword"
+                    [ngClass]="{'is-invalid': empform.get('cnfpassword').touched && empform.get('cnfpassword').invalid ,'is-valid':empform.get('cnfpassword').valid}">
+                </div>
+                <section *ngIf="empform.get('cnfpassword').invalid && empform.get('cnfpassword').touched " >
+                        <p style="color: brown" *ngIf="empform.get('cnfpassword').errors.required"> password required  </p>
+                        <p style="color: brown" *ngIf="empform.get('cnfpassword').errors.pattern ">passwords not matched </p>    
+                                  
+                   </section>
+
+
+
+<button class="form-control mx-auto col-2"> Submit
+
+</button>
+            
+
+<!-- <pre>{{empform.value|json}}</pre>  -->
+</form>    
+
+
+<!-- 
+invalid:{{empform.get('uname').invalid}}<br>
+valid:{{empform.get('uname').valid}}<br>
+name-value:{{empform.get('uname').value}}<br>
+age-value:{{empform.get('age').valid}}
+<pre>{{empform.value|json}}</pre> -->
+
+</section>
+
